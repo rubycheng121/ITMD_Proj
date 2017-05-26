@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>關燈</title>
+	<!--<link rel="stylesheet" href="style.css">-->
+	<script src="./socket.io/socket.io.js"></script>
+</head>
+<body>
+	<h1>Hello</h1>
+	<h3>要關燈嗎？</h3>
+
+	<button type="button" onclick="Close()">關!!!</button>
+
+
+
+
+	<script>
+	function Close() {
+		var isClose = true;
+
+		// var socket = io.connect('http://192.168.43.173:1337');
+		// change to pi's IP
+		//var socket = io.connect('http://172.20.10.13:1337');
+		 var socket = io.connect('http://127.0.0.1:1336');
+		socket.on('news', function (data) {
+			console.log(data);
+			// socket.emit('my other event', { my: 'data' });
+			if (data === 'TRUE') {
+				//OK
+			};
+			if (data === 'hi') {
+				var dataObj = {command:isClose};
+				socket.emit('event_turnOnRelay', dataObj);
+			};
+  		});
+			socket.on('news', function (data) {
+				console.log(data);
+				// socket.emit('my other event', { my: 'data' });
+				if (data === 'TRUE') {
+					//OK
+				};
+				if (data === 'hi') {
+					var dataObj = {command:isClose};
+					socket.emit('event_turnOnRelay', dataObj);
+				};
+	  		});
+
+  		socket.on("closeRelay",function(data){
+  			console.log(data)
+  		})
+	}
+	</script>
+</body>
+</html>

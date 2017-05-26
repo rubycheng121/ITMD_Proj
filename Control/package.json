@@ -1,0 +1,26 @@
+{
+  "name": "control",
+  "version": "1.0.0",
+  "description": "ITMD-off-light-proj",
+  "main": "Control.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "johnny-five": "^0.10.0",
+    "socket.io": "^1.4.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubycheng121/ITMD_Proj.git"
+  },
+  "keywords": [
+    "arduino",
+    "johnny-five"
+  ],
+  "author": "RubyCheng",
+  "license": "ISC"
+}
