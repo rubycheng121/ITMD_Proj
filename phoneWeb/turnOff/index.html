@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<!--
+	Intensify by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>互動科技：媒材、感知與設計</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<nav class="left">
+					<a href="#menu"><span>Menu</span></a>
+				</nav>
+				<a href="index.html" class="logo">Turn OFF!!</a>
+				<nav class="right">
+					<a href="#" class="button alt">Log in</a>
+				</nav>
+			</header>
+
+		<!-- Menu -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="generic.html">Documentation</a></li>
+					<li><a href="elements.html">Member</a></li>
+				</ul>
+				<ul class="actions vertical">
+					<li><a href="#" class="button fit">Login</a></li>
+				</ul>
+			</nav>
+
+		<!-- Banner -->
+			<section id="banner">
+				<div class="content">
+					<h1>懶人開關燈</h1>
+					<p>免拆座<br />舒適、好眠。</p>
+					<ul class="actions">
+						<li><a href="#one" class="button scrolly" type="button" onclick="Close()">關燈</a></li>
+					</ul>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<h2>Get In Touch</h2>
+					<ul class="actions">
+						<li><span class="icon fa-phone"></span> <a href="#">(02) 2939-3091</a></li>
+						<li><span class="icon fa-envelope"></span> <a href="#">rubycheng121@gmail.com</a></li>
+						<li><span class="icon fa-map-marker"></span> 1NO.64,Sec.2,ZhiNan Rd.,Wenshan District,Taipei City 11605,Taiwan (R.O.C) Taipei, Taiwan</li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="./socket.io/socket.io.js"></script>
+			<script>
+			function Close() {
+				var isClose = true;
+
+				// var socket = io.connect('http://192.168.43.173:1337');
+				// change to pi's IP
+				//var socket = io.connect('http://172.20.10.13:1337');
+				 var socket = io.connect('http://127.0.0.1:1336');
+				socket.on('news', function (data) {
+					console.log(data);
+					// socket.emit('my other event', { my: 'data' });
+					if (data === 'TRUE') {
+						//OK
+					};
+					if (data === 'hi') {
+						var dataObj = {command:isClose};
+						socket.emit('event_turnOnRelay', dataObj);
+					};
+		  		});
+					socket.on('news', function (data) {
+						console.log(data);
+						// socket.emit('my other event', { my: 'data' });
+						if (data === 'TRUE') {
+							//OK
+						};
+						if (data === 'hi') {
+							var dataObj = {command:isClose};
+							socket.emit('event_turnOnRelay', dataObj);
+						};
+			  		});
+
+		  		socket.on("closeRelay",function(data){
+		  			console.log(data)
+		  		})
+			}
+			</script>
+	</body>
+</html>
