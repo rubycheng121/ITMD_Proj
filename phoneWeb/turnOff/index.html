@@ -28,8 +28,8 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Documentation</a></li>
-					<li><a href="elements.html">Member</a></li>
+					<li><a href="/generic.html">Documentation</a></li>
+					<li><a href="/elements.html">Member</a></li>
 				</ul>
 				<ul class="actions vertical">
 					<li><a href="#" class="button fit">Login</a></li>
@@ -76,7 +76,7 @@
 				// var socket = io.connect('http://192.168.43.173:1337');
 				// change to pi's IP
 				//var socket = io.connect('http://172.20.10.13:1337');
-				 var socket = io.connect('http://127.0.0.1:1336');
+				 var socket = io.connect('http://192.168.4.214:1336');
 				socket.on('news', function (data) {
 					console.log(data);
 					// socket.emit('my other event', { my: 'data' });

@@ -3,9 +3,21 @@ var bodyParser = require('body-parser');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+var express = require('express');
+app.use("/assets", express.static(__dirname + '/assets'));
+app.use("/images", express.static(__dirname + '/images'));
+
 
 app.get('/',function(req, res){
 	res.sendFile(__dirname + '/index.html');
+});
+app.get('/generic.html',function(req, res){
+	res.sendFile(__dirname + '/generic.html');
+});
+
+
+app.get('/elements.html',function(req, res){
+	res.sendFile(__dirname + '/elements.html');
 });
 
 // 當有client連上server
